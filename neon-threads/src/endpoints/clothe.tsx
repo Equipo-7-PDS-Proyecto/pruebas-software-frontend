@@ -1,4 +1,4 @@
-const BASE_URL = 'https://3.147.32.9/api'; // URL de tu API
+import { BASE_URL } from "@/config";
 
 interface Product {
   name: string, 

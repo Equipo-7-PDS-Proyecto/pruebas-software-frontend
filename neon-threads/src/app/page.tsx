@@ -1,7 +1,11 @@
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
+import { redirect } from 'next/navigation';
 
 export default function Home() {
+  redirect('/poleras'); // Redirige automáticamente a la ruta '/poleras'
+  return null;
+
   return (
     <div className="flex flex-col bg-gray-900 text-white min-h-screen">
       <Navbar />

@@ -2,6 +2,21 @@
 
 import { useState } from 'react';
 import './style.css'; // Importa tus estilos personalizados
+import { addUser, loginUser } from '@/endpoints/login';
+import { useRouter } from 'next/navigation';
+
+enum UserType {
+  Admin = 0,
+  Regular = 1,
+  Guest = 2,
+}
+
+interface User {
+  name: string,
+  pass: string
+  email: string,
+  user_type: UserType
+}
 
 export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true);
@@ -22,6 +37,37 @@ export default function LoginPage() {
 }
 
 function LoginForm({ onToggle }: { onToggle: () => void }) {
+  const router = useRouter();
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    const username = (document.getElementById('loginUsername') as HTMLInputElement).value;
+    const password = (document.getElementById('loginPassword') as HTMLInputElement).value;
+    const email = (document.getElementById('loginEmail') as HTMLInputElement).value;
+
+    const newUser: User = {
+      name: username,
+      pass: password,
+      email: email,
+      user_type: UserType.Regular,
+    };
+
+    loginUser(newUser)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === 200) {
+          if (router) {
+            router.push('/poleras');
+          } else {
+            console.error('Router is not available');
+          }
+        } else {
+          alert('Inicio de sesión fallido');
+        }
+      })
+      .catch((error) => console.error('Error logging in:', error));
+  }
+
   return (
     <div className="content">
       <h2 className="text-2xl font-bold text-center mb-6 text-[#5e5ad7]">Iniciar Sesión</h2>
@@ -29,6 +75,10 @@ function LoginForm({ onToggle }: { onToggle: () => void }) {
         <div className="inputBox">
           <input type="text" id="loginUsername" className="custom-input" required />
           <i>Nombre de Usuario</i>
+        </div>
+        <div className="inputBox">
+          <input type="text" id="loginEmail" className="custom-input" required />
+          <i>Email</i>
         </div>
         <div className="inputBox">
           <input type="password" id="loginPassword" className="custom-input" required />
@@ -41,7 +91,7 @@ function LoginForm({ onToggle }: { onToggle: () => void }) {
           </button>
         </p>
         <div className="inputBox">
-          <input type="submit" value="Ingresar" className="custom-button" />
+          <input type="submit" value="Ingresar" className="custom-button" onClick={handleSubmit}/>
         </div>
       </form>
     </div>
@@ -59,8 +109,24 @@ function RegisterForm({ onToggle }: { onToggle: () => void }) {
       return;
     }
 
-    // Aquí puedes proceder con el envío del formulario si las contraseñas coinciden
-    alert('Registro exitoso');
+    const username = (document.getElementById('registerUsername') as HTMLInputElement).value;
+    const email = (document.getElementById('registerEmail') as HTMLInputElement).value;
+
+    const newUser: User = {
+      name: username,
+      pass: password,
+      email: email,
+      user_type: UserType.Regular,
+    };
+    
+    addUser(newUser)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === 200) {
+          onToggle();
+        }
+      })
+      .catch((error) => console.error('Error adding user:', error));
   };
 
   return (
@@ -95,5 +161,4 @@ function RegisterForm({ onToggle }: { onToggle: () => void }) {
       </form>
     </div>
   );
-
 }

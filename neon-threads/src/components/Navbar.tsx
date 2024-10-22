@@ -13,8 +13,7 @@ const Navbar = () => {
           />
         </form>
         <div>
-          <a href="/" className="px-4 py-2 text-white hover:text-blue-500">Home</a>
-          <a href="/poleras" className="px-4 py-2 text-white hover:text-blue-500">Productos</a>
+          <a href="/poleras" className="px-4 py-2 text-white hover:text-blue-500">Home</a>
           <a href="/admin" className="px-4 py-2 text-white hover:text-blue-500">Administración</a>
           <a href="/login" className="px-4 py-2 text-white hover:text-blue-500">Login</a>
         </div>
