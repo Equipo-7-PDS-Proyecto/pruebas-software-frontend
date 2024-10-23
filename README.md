@@ -58,9 +58,8 @@ Se han implementado pruebas unitarias que verifican el comportamiento de la apli
 ## Procedimiento de ejecución de pruebas
 
 Para ejecutar las pruebas, se utiliza el siguiente comando desde la terminal, que ejecuta todas las pruebas contenidas en la carpeta test:
-
-bash
-npm test
+- bash
+- npm test
 
 
 ## Reporte de resultados
