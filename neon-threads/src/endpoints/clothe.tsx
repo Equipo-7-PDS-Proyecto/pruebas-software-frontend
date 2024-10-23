@@ -12,6 +12,16 @@ interface Product {
   available_count: number
 }
 
+export async function getProduct(id: string) {
+  const response = await fetch(`${BASE_URL}/clothe/${id}`);
+  
+  if (!response.ok) {
+    throw new Error('Error al obtener el producto');
+  }
+  
+  return response.json();
+}
+
 export async function fetchProducts() {
   const response = await fetch(`${BASE_URL}/clothe/all`);
   

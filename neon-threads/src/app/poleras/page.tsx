@@ -7,7 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 interface Product {
-  _id: number,
+  _id: string,
   name: string, 
   description: string, 
   price: number, 
@@ -44,7 +44,7 @@ export default function TestPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.length > 0 ? (
             products.map((product) => (
-              <Link href="/shop-single" key={product._id}>
+              <Link href={`/shop-single?_id=${product._id}`} key={product._id}>
                   <div className="bg-white p-4 rounded shadow-md">
                     <div className="w-96 h-96 relative">
                       <Image

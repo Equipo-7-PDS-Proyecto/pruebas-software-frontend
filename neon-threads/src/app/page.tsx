@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import { redirect } from 'next/navigation';
 
 export default function Home() {
-  redirect('/poleras'); // Redirige automáticamente a la ruta '/poleras'
+  redirect('/login'); // Redirige automáticamente a la ruta '/poleras'
   return null;
 
   return (
