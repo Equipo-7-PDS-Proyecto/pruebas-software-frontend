@@ -51,13 +51,10 @@ const Page: React.FC = () => {
       <Navbar />
 
       {/* Main Content */}
-      <section className="py-10 min-h-screen bg-gray-900 text-white">
-        <div className="container mx-auto flex flex-col lg:flex-row items-start justify-between">
-          
-          {/* Product Image */}
+      <section className="py-12 min-h-screen bg-gray-900 text-white">
+        <div className="container mx-auto flex flex-col lg:flex-row flex items-center justify-center">      
           <div className="bg-white p-4 rounded shadow-md">
-            {/* Tarjeta blanca que envuelve la imagen */}
-            <div className="relative w-96 h-96">
+            <div className="relative w-96 h-96 py-4 px-4">
               <Image
                 className="rounded"
                 src={product.url_photo}
@@ -73,7 +70,6 @@ const Page: React.FC = () => {
             <h1 className="text-4xl font-bold text-black mb-4">{product.name}</h1>
             <p className="text-3xl text-black mb-4">${product.price}</p>
 
-            {/* Añadir espacio entre las estrellas y la Categoría */}
             <div className="mt-6 space-y-2">
               {/* Categoría */}
               <div className="flex items-center space-x-2">
@@ -110,14 +106,16 @@ const Page: React.FC = () => {
               </div>
             </div>
 
-            {/* Talla y Cantidad en la misma línea */}
             <div className="mt-6 flex items-center space-x-6">
               {/* Talla */}
               <div className="flex items-center space-x-2">
                 <h6 className="font-bold text-black">Talla:</h6>
-                <p className="text-gray-600">
-                  {product.clothe_size}
-                </p>
+                <div className="flex space-x-2">
+                  <button className="px-3 py-1 bg-purple-600 text-white rounded">S</button>
+                  <button className="px-3 py-1 bg-purple-600 text-white rounded">M</button>
+                  <button className="px-3 py-1 bg-purple-600 text-white rounded">L</button>
+                  <button className="px-3 py-1 bg-purple-600 text-white rounded">XL</button>
+                </div>
               </div>
 
               {/* Cantidad */}
