@@ -29,21 +29,21 @@ de los componentes de la carpeta components.
 
 ### Instalación de dependencias
 
-bash
-cd neon-threads
-npm install
+- bash
+- cd neon-threads
+- npm install
 
 ## Ejecución del programa
 
-Para ejecución en ambiente de prueba
-bash
-cd neon-threads
-npm run dev
+Para ejecución en ambiente de prueba:
+- bash
+- cd neon-threads
+- npm run dev
 
 
-Para ejecución en producción
-bash
-npm start
+Para ejecución en producción:
+- bash
+- npm start
 
 
 ## Estrategia de pruebas utilizadas
