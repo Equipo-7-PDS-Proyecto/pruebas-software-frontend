@@ -1,5 +1,8 @@
 # pruebas-software-frontend
 
+# Video
+https://www.youtube.com/watch?v=sBvolwws3io
+
 # Readme de Instalación
 
 ## Alcances de la herramienta de testing (Mocha Chai)
