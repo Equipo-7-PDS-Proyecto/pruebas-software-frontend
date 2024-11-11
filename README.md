@@ -1,7 +1,10 @@
 # pruebas-software-frontend
 
-# Video
+# Video E1
 https://www.youtube.com/watch?v=sBvolwws3io
+
+# Video E2
+https://www.youtube.com/watch?v=1XZJAQSP6fc
 
 # Readme de Instalación
 
