@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        PATH = "${env.WORKSPACE}/node_modules/.bin:${env.PATH}"
+        PATH = "/usr/bin:${env.WORKSPACE}/node_modules/.bin:${env.PATH}"
         BUILD_ID = 'dontKillMe'
         DISPLAY = ':99'
     }
