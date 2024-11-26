@@ -56,6 +56,10 @@ function LoginForm({ onToggle }: { onToggle: () => void }) {
       .then((response) => response.json())
       .then((data) => {
         if (data.status === 200) {
+          if (username.toLowerCase() === 'admin') {
+          } else {
+          }
+
           if (router) {
             router.push('/poleras');
           } else {

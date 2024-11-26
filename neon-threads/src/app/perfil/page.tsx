@@ -49,7 +49,7 @@ export default function UserProfilePage() {
 
             const data = await response.json();
             if (data.status === 200) {
-                alert('Perfil guardado correctamente');
+
                 setIsEditing(false); // Salir del modo edición después de guardar
             } else {
                 alert('Error al guardar el perfil');
