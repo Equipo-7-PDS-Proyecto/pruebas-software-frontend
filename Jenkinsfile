@@ -51,7 +51,7 @@ pipeline {
                     sh 'sudo systemctl stop frontend.service || true'
 
                     // Copiamos solo los archivos de compilación al directorio de despliegue
-                    sd 'sudo cp -r ${env.WORKSPACE}/neon-threads/.next /home/ec2-user/pruebas-software-frontend/neon-threads/'
+                    sh 'sudo cp -r ${env.WORKSPACE}/neon-threads/.next /home/ec2-user/pruebas-software-frontend/neon-threads/'
 
                     // Iniciamos el servicio con los nuevos archivos
                     sh 'sudo systemctl start frontend.service'
