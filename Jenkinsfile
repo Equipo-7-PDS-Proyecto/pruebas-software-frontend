@@ -22,13 +22,8 @@ pipeline {
             steps {
                 script {
                     dir('neon-threads') {
-                    sh '''
-                        # Iniciamos el entorno gráfico virtual
-                        Xvfb :99 -screen 0 1920x1080x24 &
-
-                        # Corremos las pruebas con Selenium Side Runner y el chromedriver de node_modules
-                        npx selenium-side-runner -c "browserName=chrome" tests/TestSelenium.side
-                        '''
+                    wrap([$class: 'Xvfb', screen: '1920x1080x24']) {
+                        sh 'npx selenium-side-runner -c browserName=chrome tests/TestSelenium.side'
                     }
                 }
             }
