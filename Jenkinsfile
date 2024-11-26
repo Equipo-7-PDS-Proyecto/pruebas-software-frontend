@@ -22,8 +22,9 @@ pipeline {
             steps {
                 script {
                     dir('neon-threads') {
-                    wrap([$class: 'Xvfb', screen: '1920x1080x24']) {
-                        sh 'npx selenium-side-runner -c browserName=chrome tests/TestSelenium.side'
+                        wrap([$class: 'Xvfb', screen: '1920x1080x24']) {
+                            sh 'npx selenium-side-runner -c browserName=chrome tests/TestSelenium.side'
+                        }
                     }
                 }
             }
