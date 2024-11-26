@@ -23,7 +23,7 @@ section {
   overflow: hidden;
 }
 
-section::before {
+.login-section::before{
   content: '';
   position: absolute;
   width: 100%;
