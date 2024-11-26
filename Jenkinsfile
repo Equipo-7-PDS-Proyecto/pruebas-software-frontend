@@ -18,40 +18,43 @@ pipeline {
                 }
             }
         }
-        stage('Correr Pruebas de Selenium') {
-            steps {
-                script {
-                    dir('neon-threads') {
-                        wrap([$class: 'Xvfb', screen: '1920x1080x24']) {
-                            sh 'npx selenium-side-runner -c browserName=chrome tests/TestSelenium.side'
-                        }
-                    }
-                }
-            }
-        }
         stage('Compilar Aplicación') {
             steps {
                 script {
                     dir('neon-threads') {
-                        sh 'npm run build'  // Asegúrate de que el comando build esté configurado en tu package.json
+                        sh 'npm run build'
+                    }
+                }
+            }
+        }
+        stage('Correr Pruebas de Selenium') {
+            steps {
+                script {
+                    dir('neon-threads') {
+                        // Levanta un servidor temporal usando el código recién construido
+                        sh 'npm run start &'
+                        wrap([$class: 'Xvfb', screen: '1920x1080x24']) {
+                            // Espera un momento para que el servidor arranque
+                            sleep time: 5, unit: 'SECONDS'
+                            // Ejecuta las pruebas contra el servidor temporal
+                            sh 'npx selenium-side-runner -c browserName=chrome tests/TestSelenium.side'
+                        }
+                        // Detiene el servidor temporal después de las pruebas
+                        sh 'pkill -f "npm run start" || true'
                     }
                 }
             }
         }
         stage('Desplegar') {
-            /* when {
-                //Solo ejecuta esta etapa si las pruebas pasaron
-                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
-            } */
             steps {
                 script {
-                    // Detenemos el servicio antes de desplegar
+                    // Detenemos el servicio existente
                     sh 'sudo systemctl stop frontend.service || true'
 
                     // Copiamos solo los archivos de compilación al directorio de despliegue
                     sh 'sudo cp -r ${WORKSPACE}/neon-threads/.next /home/ec2-user/pruebas-software-frontend/neon-threads/'
 
-                    // Iniciamos el servicio con los nuevos archivos
+                    // Reiniciamos el servicio con el nuevo código
                     sh 'sudo systemctl start frontend.service'
                 }
             }
