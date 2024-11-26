@@ -3,6 +3,7 @@ pipeline {
     environment {
         PATH = "${env.WORKSPACE}/node_modules/.bin:${env.PATH}"
         BUILD_ID = 'dontKillMe'
+        DISPLAY = ':99'
     }
     tools {
         nodejs 'node js'
