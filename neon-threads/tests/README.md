@@ -9,7 +9,7 @@
     1. Ejecutar con Selenium-side-runner (CLI):
     2. Asegúrate de tener instalado Node.js.
 
-> npm install -g selenium-side-runner
+> npm install selenium-side-runner
 
     3. Ejecuta las pruebas:
 
