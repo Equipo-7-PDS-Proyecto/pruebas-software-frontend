@@ -4,7 +4,11 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
-const Navbar = () => {
+interface NavbarProps {
+  userType: number;
+}
+
+const Navbar : React.FC<NavbarProps> = ({ userType }) => {
   const [isCartVisible, setCartVisible] = useState(false); 
 
   const toggleCart = () => {
@@ -24,8 +28,13 @@ const Navbar = () => {
         </form>
         <div className="flex items-center">
           <a href="/poleras" className="px-4 py-2 text-white hover:text-blue-500">Home</a>
-          <a href="/admin" className="px-4 py-2 text-white hover:text-blue-500">Administración</a>
-          <a href="/login" className="px-4 py-2 text-white hover:text-blue-500">Login</a>
+          <a href="/poleras" className="px-4 py-2 text-white hover:text-blue-500">Productos</a>
+          {/* Mostrar "Administración" solo si el usuario no es tipo 1 */}
+          {userType !== 1 && (
+            <a href="/admin" className="px-4 py-2 text-white hover:text-blue-500">Administración</a>
+          )}
+          <a href="/perfil" className="px-4 py-2 text-white hover:text-blue-500">Perfil</a>
+          <a href="/login" className="px-4 py-2 text-white hover:text-blue-500">Iniciar Sesión</a>
 
           {/* Icono del carrito */}
           <div className="relative ml-4">
