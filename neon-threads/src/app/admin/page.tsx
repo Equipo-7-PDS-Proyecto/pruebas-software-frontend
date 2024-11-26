@@ -144,7 +144,7 @@ export default function AdminPage() {
 
     return (
         <div className="flex flex-col min-h-screen bg-gray-900 text-white">
-         <Navbar userType={1} />
+         <Navbar userType={0} />
         <main className="flex-grow container mx-auto py-12">
           <h1 className="text-4xl font-bold mb-6">Administración de inventario</h1>
           <div className="mb-6 max-w-3xl mx-auto">

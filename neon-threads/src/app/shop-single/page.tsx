@@ -45,11 +45,7 @@ const ProductPage: React.FC = () => {
 
   return (
     <div>
-<<<<<<< HEAD
       <Navbar userType={0} />
-=======
-      <Navbar userType={1} />
->>>>>>> f684a6ab7c2699c5008b73106daa061bb3fa5842
 
       {/* Main Content */}
       <section className="py-12 min-h-screen bg-gray-900 text-white">
