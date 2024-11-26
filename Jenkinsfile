@@ -17,20 +17,21 @@ pipeline {
                 }
             }
         }
-        //stage('Correr Tests') {
-        //    steps {
-        //        sh 'sudo systemctl stop frontend.service || true'
-        //        sh 'npm run build && npx mocha --exit --reporter mocha-junit-reporter --reporter-options mochaFile=./reports/test-results.xml ./dist/app/test/**/*.js'
-        //    }
-        //    post {
-        //        always {
-        //            junit 'reports/test-results.xml'
-        //        }
-        //        failure {
-        //            error('Tests failed')
-        //        }
-        //    }
-        //}
+        stage('Correr Pruebas de Selenium') {
+            steps {
+                script {
+                    dir('neon-threads') {
+                    sh '''
+                        # Iniciamos el entorno gráfico virtual
+                        Xvfb :99 -screen 0 1920x1080x24 &
+
+                        # Corremos las pruebas con Selenium Side Runner y el chromedriver de node_modules
+                        npx selenium-side-runner -c "browserName=chrome" tests/TestSelenium.side
+                        '''
+                    }
+                }
+            }
+        }
         stage('Compilar Aplicación') {
             steps {
                 script {
