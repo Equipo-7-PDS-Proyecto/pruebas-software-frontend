@@ -48,7 +48,7 @@ const Page: React.FC = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar userType={0} />
 
       {/* Main Content */}
       <section className="py-12 min-h-screen bg-gray-900 text-white">

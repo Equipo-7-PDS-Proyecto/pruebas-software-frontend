@@ -62,7 +62,7 @@ export default function UserProfilePage() {
 
     return (
         <div className="flex flex-col min-h-screen bg-gray-900 text-white">
-            <Navbar userType={1} />
+            <Navbar />
             <main className="flex-grow container mx-auto py-12">
                 <h1 className="text-4xl font-bold mb-6">Perfil de Usuario</h1>
                 <div className="mb-6 max-w-md mx-auto bg-gray-800 p-6 rounded-lg shadow-lg">

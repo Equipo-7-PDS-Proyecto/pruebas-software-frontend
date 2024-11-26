@@ -44,7 +44,7 @@ export async function addProduct(product: Product) {
   if (!response.ok) {
     throw new Error('Error al agregar el producto');
   }
-  
+
   return response;
 }
 

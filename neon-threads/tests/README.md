@@ -13,4 +13,4 @@
 
     3. Ejecuta las pruebas:
 
-> selenium-side-runner TestSelenium
+> selenium-side-runner TestSelenium.side

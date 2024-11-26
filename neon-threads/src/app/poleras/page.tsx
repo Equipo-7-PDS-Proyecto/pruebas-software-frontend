@@ -37,7 +37,7 @@ export default function TestPage() {
 
   return (
     <div className="flex flex-col bg-gray-900 text-white min-h-screen">
-       <Navbar userType={1} />
+       <Navbar  />
 
       <section className="container mx-auto py-12">
         <h1 className="text-4xl font-bold mb-6">Productos</h1>
