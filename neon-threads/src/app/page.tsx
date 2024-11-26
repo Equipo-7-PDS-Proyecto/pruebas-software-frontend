@@ -8,7 +8,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col bg-gray-900 text-white min-h-screen">
-      <Navbar />
+      <Navbar userType={1} />
 
       {/* Lista de productos */}
       <section className="container mx-auto py-12">
