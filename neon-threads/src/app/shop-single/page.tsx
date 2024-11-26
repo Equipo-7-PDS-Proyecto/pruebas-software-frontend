@@ -1,34 +1,31 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import { getProduct } from '@/endpoints/clothe';
 import { useSearchParams } from 'next/navigation';
 
-
 interface Product {
-  name: string, 
-  description: string, 
-  price: number, 
-  url_photo: string, 
-  category: string, 
-  clothe_type: string, 
-  clothe_size: string, 
-  clothe_color: string, 
-  available_count: number
+  name: string;
+  description: string;
+  price: number;
+  url_photo: string;
+  category: string;
+  clothe_type: string;
+  clothe_size: string;
+  clothe_color: string;
+  available_count: number;
 }
 
-const Page: React.FC = () => {
+const ProductPage: React.FC = () => {
   const [quantity, setQuantity] = useState(1);
-
-  const incrementQuantity = () => setQuantity(quantity + 1);
-  const decrementQuantity = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
-
   const [product, setProduct] = useState<Product | null>(null);
   const searchParams = useSearchParams();
   const _id = searchParams.get('_id');
-  console.log(product);
+
+  const incrementQuantity = () => setQuantity(quantity + 1);
+  const decrementQuantity = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
 
   useEffect(() => {
     if (_id) {
@@ -48,11 +45,15 @@ const Page: React.FC = () => {
 
   return (
     <div>
+<<<<<<< HEAD
       <Navbar userType={0} />
+=======
+      <Navbar userType={1} />
+>>>>>>> f684a6ab7c2699c5008b73106daa061bb3fa5842
 
       {/* Main Content */}
       <section className="py-12 min-h-screen bg-gray-900 text-white">
-        <div className="container mx-auto flex flex-col lg:flex-row flex items-center justify-center">      
+        <div className="container mx-auto flex flex-col lg:flex-row flex items-center justify-center">
           <div className="bg-white p-4 rounded shadow-md">
             <div className="relative w-96 h-96 py-4 px-4">
               <Image
@@ -76,7 +77,7 @@ const Page: React.FC = () => {
                 <h6 className="font-bold text-black">Categoría:</h6>
                 <p className="text-gray-600">{product.category}</p>
               </div>
-              
+
               {/* Tipo */}
               <div className="flex items-center space-x-2">
                 <h6 className="font-bold text-black">Tipo:</h6>
@@ -92,17 +93,13 @@ const Page: React.FC = () => {
               {/* Descripción */}
               <div className="space-y-1">
                 <h6 className="font-bold text-black">Descripción:</h6>
-                <p className="text-gray-600">
-                  {product.description}
-                </p>
+                <p className="text-gray-600">{product.description}</p>
               </div>
 
               {/* Stock */}
               <div className="space-y-1">
                 <h6 className="font-bold text-black">En inventario:</h6>
-                <p className="text-gray-600">
-                  {product.available_count} disponibles
-                </p>
+                <p className="text-gray-600">{product.available_count} disponibles</p>
               </div>
             </div>
 
@@ -145,6 +142,14 @@ const Page: React.FC = () => {
         </div>
       </footer>
     </div>
+  );
+};
+
+const Page: React.FC = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ProductPage />
+    </Suspense>
   );
 };
 
