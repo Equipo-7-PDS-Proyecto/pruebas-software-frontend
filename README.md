@@ -1,5 +1,5 @@
 # pruebas-software-frontend
-Esto es un test de jenkins
+
 # Entregable 1
 Este READ ME
 
